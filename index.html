@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -6,297 +6,195 @@
     <title>DENJI STORE - Ultra Thumbnails</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #0d0d0d;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
+        body { margin: 0; padding: 0; background-color: #0d0d0d; font-family: 'Plus Jakarta Sans', sans-serif; color: #ffffff; overflow-x: hidden; scroll-behavior: smooth; }
 
-        .marquee-wrapper {
-            background: linear-gradient(90deg, #f65602, #ff6a00);
-            color: #000000;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 14px;
-            letter-spacing: 2px;
-            padding: 15px 0;
-            text-transform: uppercase;
-            overflow: hidden;
-            display: flex;
-            white-space: nowrap;
-            box-shadow: 0 5px 20px rgba(246, 86, 2, 0.4);
-        }
-
-        .marquee-content {
-            display: flex;
-            width: max-content;
-            animation: marquee 25s linear infinite;
-        }
-
-        .marquee-content span {
-            padding: 0 25px;
-            display: inline-block;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
+        /* Cập nhật Marquee */
+        .marquee-wrapper { background: linear-gradient(90deg, #f65602, #ff6a00); color: #000000; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14px; letter-spacing: 2px; padding: 15px 0; text-transform: uppercase; overflow: hidden; display: flex; white-space: nowrap; box-shadow: 0 5px 20px rgba(246, 86, 2, 0.4); width: 100%; }
+        .marquee-content { display: flex; animation: marquee 20s linear infinite; gap: 40px; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         
-        .header-nav {
-            max-width: 1430px; 
-            margin: 30px auto;
-            background: rgba(20, 20, 20, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 18px 40px;
-            border-radius: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            box-sizing: border-box;
+        /* CSS các phần khác */
+        .header-nav { max-width: 1430px; margin: 30px auto; background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 18px 40px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); box-sizing: border-box; position: sticky; top: 20px; z-index: 1000; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 60px; height: 60px; border-radius: 20px; object-fit: cover; }
+        .logo-text h3 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: 26px; letter-spacing: -0.5px; }
+        .logo-text span { font-size: 13px; color: #f65602; letter-spacing: 3px; text-transform: uppercase; display: block; }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { color: #aaaaaa; text-decoration: none; margin-left: 25px; font-size: 18px; transition: 0.3s ease; position: relative; padding-bottom: 5px; cursor: pointer; }
+        .nav-links a:after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #f65602; transition: 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: #ffffff; transform: translateY(-5px); }
+        .nav-links a:hover:after, .nav-links a.active:after { width: 100%; }
+        .separator { color: #aaaaaa; margin-left: 25px; font-size: 18px; }
+        #top { scroll-margin-top: 100px; }
+
+        .hero-container { max-width: 1430px; margin: 90px auto 40px auto; padding: 0 40px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: center; box-sizing: border-box; }
+        .hero-text h1 { font-family: 'Montserrat', sans-serif; font-size: 70px; font-weight: 900; line-height: 1.05; margin: 0 0 25px 0; text-transform: uppercase; letter-spacing: -2px; }
+        .hero-text .outline { color: #0d0d0d; text-shadow: -2px -2px 0 #f65602, 2px -2px 0 #f65602, -2px 2px 0 #f65602, 2px 2px 0 #f65602; }
+        .stats-grid { display: flex; gap: 20px; margin-bottom: 25px; }
+        .stat-box { background: #141414; border: 1px solid #222; padding: 26px; border-radius: 18px; flex: 1; }
+        .stat-box h2 { font-family: 'Montserrat', sans-serif; font-size: 42px; color: #f65602; margin: 0; }
+        .cta-btn { background: #f65602; color: #ffffff; display: block; text-align: center; padding: 22px; border-radius: 16px; text-decoration: none; font-weight: 900; font-size: 21px; box-shadow: 0 12px 35px rgba(246, 86, 2, 0.35); transition: 0.3s; }
+        .cta-btn:hover { transform: translateY(-4px); box-shadow: 0 18px 45px rgba(246, 86, 2, 0.55); }
+        .section-container { max-width: 1430px; margin: 60px auto; padding: 0 40px; box-sizing: border-box; scroll-margin-top: 120px; }
+        .divider { height: 4px; width: 100%; background-color: #f65602; margin: 40px auto; border-radius: 2px; }
+        .title { font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 900; text-transform: uppercase; text-align: center; margin-bottom: 40px; }
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .video-card { background: #141414; border-radius: 16px; overflow: hidden; display: block; text-decoration: none; transition: 0.3s; }
+        .video-card:hover { transform: translateY(-10px); }
+        .video-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+
+        /* Review Section - CHỈNH THÀNH KÉO NGANG */
+        .review-slider {
+            overflow-x: auto;
+            overflow-y: hidden;
+            display: block;
+            width: 100%;
+            cursor: grab;
         }
 
-        .logo-area {
+        .review-track {
             display: flex;
-            align-items: center;
-            gap: 12px;
+            gap: 30px;
         }
 
-        .logo-icon {
-            width: 60px;
-            height: 60px;
+        .review-item {
+            min-width: 350px;
+            background: #141414;
+            padding: 25px;
             border-radius: 20px;
+            border: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             object-fit: cover;
         }
 
-        .logo-text h3 {
+        .review-info h4 {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 26px;
-            letter-spacing: -0.5px;
+            font-size: 18px;
+            color: #fff;
         }
 
-        .logo-text span {
+        .review-info span {
             font-size: 13px;
             color: #f65602;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            display: block;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-
-        /* Định cấu trúc link để làm đường gạch chân chuẩn */
-        .nav-links a {
-            color: #aaaaaa;
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 18px;
-            transition: 0.3s;
-            position: relative;
-            padding-bottom: 5px;
-            display: inline-block;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: #ffffff;
-        }
-
-        /* Tạo đường gạch chân bằng pseudo-element để không bị dính vào dấu "/" */
-        .nav-links a::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #f65602;
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .nav-links a:hover::before, .nav-links a.active::before {
-            transform: scaleX(1);
-        }
-
-        /* Đưa dấu gạch chéo ra ngoài luồng gạch chân của thẻ a */
-        .nav-links .separator {
-            color: #aaaaaa;
-            margin-left: 25px;
-            font-size: 18px;
-            user-select: none;
-            pointer-events: none;
-        }
-
-        .hero-container {
-            max-width: 1430px; 
-            margin: 90px auto; 
-            padding: 0 40px;
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 60px; 
-            align-items: center;
-            box-sizing: border-box;
-        }
-
-        .hero-text h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 70px; 
-            font-weight: 900;
-            line-height: 1.05;
-            margin: 0 0 25px 0;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-        }
-
-        .hero-text h1 .outline {
-            color: #0d0d0d; 
-            text-shadow: 
-                -2px -2px 0 #f65602,  
-                 2px -2px 0 #f65602,
-                -2px  2px 0 #f65602,
-                 2px  2px 0 #f65602,
-                -2px  0px 0 #f65602,
-                 2px  0px 0 #f65602,
-                 0px -2px 0 #f65602,
-                 0px  2px 0 #f65602;
-            letter-spacing: -2px;
-        }
-
-        .hero-text p {
-            color: #888888;
-            font-size: 20px; 
-            margin-top: 25px;
-        }
-
-        .stats-grid {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .stat-box {
-            background: #141414;
-            border: 1px solid #222;
-            padding: 26px; 
-            border-radius: 18px;
-            flex: 1;
-            text-align: left;
-        }
-
-        .stat-box h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 42px; 
-            color: #f65602;
-            margin: 0;
-        }
-
-        .stat-box p {
-            margin: 6px 0 0 0;
-            color: #ffffff;
             font-weight: 700;
-            font-size: 14px; 
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .cta-btn {
-            background: #f65602;
-            color: #ffffff;
             display: block;
-            text-align: center;
-            padding: 22px; 
-            border-radius: 16px;
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 21px; 
-            letter-spacing: 1px;
-            box-shadow: 0 12px 35px rgba(246, 86, 2, 0.35);
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 45px rgba(246, 86, 2, 0.55);
+        .review-text {
+            font-style: italic;
+            color: #aaaaaa;
+            line-height: 1.5;
+            margin: 0;
         }
     </style>
 </head>
-<body>
+<body id="top">
 
     <div class="marquee-wrapper">
-        <div class="marquee-content">
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
-            <span>• DENJI STORE</span>
+        <div class="marquee-content" id="marquee">
+            <span>• WELCOME TO DENJI STORE</span> <span>• WELCOME TO DENJI STORE</span> 
+            <span>• WELCOME TO DENJI STORE</span> <span>• WELCOME TO DENJI STORE</span>
         </div>
     </div>
 
     <nav class="header-nav">
         <div class="logo-area">
-            <img src="https://media.discordapp.net/attachments/1513367751844958328/1518173806693449849/b69ef39a-2ab7-44ef-98c4-afdc329f27ad_1.png?ex=6a3e3b09&is=6a3ce989&hm=34ce262bbd9a24ac8f0b9ebe7aaa46f19ee202e7f64abc46f61c58411b838a9b&=&format=webp&quality=lossless&width=960&height=960" class="logo-icon" alt="Logo">
-            <div class="logo-text">
-                <h3>DENJI STORE</h3>
-                <span>Studio</span>
-            </div>
+            <img src="denjistore.jpg" class="logo-icon">
+            <div class="logo-text"><h3>DENJI STORE</h3><span>Studio</span></div>
         </div>
         <div class="nav-links">
-            <a href="#">Reviews</a>
-            <span class="separator">/</span>
-            <a href="#">Work</a>
-            <span class="separator">/</span>
-            <a href="#" class="active">Contact</a>
+            <a href="#reviews-section" class="nav-item">Reviews</a> 
+            <span class="separator">/</span> 
+            <a href="#product-section" class="nav-item">Works</a> 
+            <span class="separator">/</span> 
+            <a href="#top" class="nav-item active">Contact</a>
         </div>
     </nav>
 
     <main class="hero-container">
         <div class="hero-text">
-            <h1>DENJI STORE<br><span class="outline">MINECRAFT</span><br>THUMBNAILS.</h1>
+            <h1>DENJI STORE<br><span class="outline">MINECRAFT</span><br>THUMBNAILS</h1>
             <p>We provide high-quality Minecraft Thumbnail products!</p>
         </div>
-        
         <div class="hero-right">
             <div class="stats-grid">
-                <div class="stat-box">
-                    <h2>89K+</h2>
-                    <p>Views</p>
-                </div>
-                <div class="stat-box">
-                    <h2>1,4K+</h2>
-                    <p>Likes</p>
-                </div>
+                <div class="stat-box"><h2>89K+</h2><p>Views</p></div>
+                <div class="stat-box"><h2>1.4K+</h2><p>Likes</p></div>
             </div>
             <a href="https://discord.gg/fZkWkShtp6" target="_blank" class="cta-btn">ORDER HERE!</a>
         </div>
     </main>
 
+    <section id="product-section" class="section-container">
+        <div class="divider"></div>
+        <h2 class="title">PRODUCT</h2>
+        <div class="product-grid" id="productGrid">
+            <div data-youtube="io562SY6aFo"></div>
+        </div>
+    </section>
+
+    <section id="reviews-section" class="section-container">
+        <div class="divider"></div>
+        <h2 class="title">REVIEWS</h2>
+        <div class="review-slider">
+            <div class="review-track">
+                
+                <div class="review-item">
+                    <div class="review-header">
+                        <img src="denjistore.jpg" class="review-avatar" alt="Avatar">
+                        <div class="review-info">
+                            <h4>@sillyrent</h4>
+                            <span>100+ SUBSCRIBERS</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"Very easy to work with, gave me raw version and asked for any changes. Would highly recommend!"</p>
+                </div>
+
+                <div class="review-item">
+                    <div class="review-header">
+                        <img src="denjistore.jpg" class="review-avatar" alt="Avatar">
+                        <div class="review-info">
+                            <h4>@pepetheninja</h4>
+                            <span>40K+ SUBSCRIBERS</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"Denji was great to work with. He was always kind, quick to respond, and very easy to communicate with. His thumbnails are good, though I think there’s still some room for improvement. I’d rate him 4.5/5 for professionalism and 3.5/5 for the quality of his work. Overall, I’d definitely recommend working with him!"</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const marquee = document.getElementById('marquee');
+        marquee.innerHTML += marquee.innerHTML;
+
+        document.querySelectorAll('[data-youtube]').forEach(el => {
+            const id = el.getAttribute('data-youtube');
+            el.innerHTML = `<a href="https://www.youtube.com/watch?v=${id}" target="_blank" class="video-card"><img src="https://i.ytimg.com/vi/${id}/maxresdefault.jpg" alt="Thumbnail"></a>`;
+        });
+        
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navItems.forEach(n => n.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
