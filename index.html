@@ -65,17 +65,12 @@
             gap: 12px;
         }
 
+        /* Thay đổi để hiển thị hình ảnh avatar mới làm logo mượt mà hơn */
         .logo-icon {
-            background: #ff5500;
             width: 40px;
             height: 40px;
             border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            color: #000;
+            object-fit: cover; /* Đảm bảo ảnh không bị méo */
         }
 
         .logo-text h3 {
@@ -226,7 +221,7 @@
 
     <nav class="header-nav">
         <div class="logo-area">
-            <div class="logo-icon">⚒</div>
+            <img src="https://media.discordapp.net/attachments/1513367751844958328/1518173806693449849/b69ef39a-2ab7-44ef-98c4-afdc329f27ad_1.png?ex=6a3e3b09&is=6a3ce989&hm=34ce262bbd9a24ac8f0b9ebe7aaa46f19ee202e7f64abc46f61c58411b838a9b&=&format=webp&quality=lossless&width=960&height=960" class="logo-icon" alt="Logo">
             <div class="logo-text">
                 <h3>DENJI STORE</h3>
                 <span>Studio</span>
