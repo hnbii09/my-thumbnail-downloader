@@ -135,12 +135,19 @@
             letter-spacing: -2px;
         }
 
+        /* Sửa lỗi phông chữ hoàn toàn bằng phương pháp text-shadow đổ viền mới */
         .hero-text h1 .outline {
-            color: transparent;
-            -webkit-text-stroke: 2.5px #f65602; 
-            text-stroke: 2.5px #f65602;
-            paint-order: stroke fill;
-            text-transform: uppercase; /* Ép kiểu chữ hoa bằng CSS để sửa lỗi phông hiển thị viền */
+            color: #0d0d0d; /* Tiệp với màu nền đen phía sau tạo cảm giác rỗng ruột */
+            text-shadow: 
+                -2px -2px 0 #f65602,  
+                 2px -2px 0 #f65602,
+                -2px  2px 0 #f65602,
+                 2px  2px 0 #f65602,
+                -2px  0px 0 #f65602,
+                 2px  0px 0 #f65602,
+                 0px -2px 0 #f65602,
+                 0px  2px 0 #f65602;
+            letter-spacing: -2px;
         }
 
         .hero-text p {
@@ -250,7 +257,7 @@
 
     <main class="hero-container">
         <div class="hero-text">
-            <h1>DENJI STORE<br><span class="outline">minecraft</span><br>THUMBNAILS.</h1>
+            <h1>DENJI STORE<br><span class="outline">MINECRAFT</span><br>THUMBNAILS.</h1>
             <p>We provide high-quality Minecraft Thumbnail products!</p>
         </div>
         
