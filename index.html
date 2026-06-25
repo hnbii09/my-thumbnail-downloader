@@ -88,6 +88,11 @@
             display: block;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             color: #aaaaaa;
             text-decoration: none;
@@ -100,6 +105,13 @@
             color: #ffffff;
             border-bottom: 2px solid #f65602;
             padding-bottom: 5px;
+        }
+
+        .nav-links a:not(:last-child)::after {
+            content: "/";
+            color: #747474;
+            margin-left: 25px;
+            pointer-events: none;
         }
 
         .hero-container {
