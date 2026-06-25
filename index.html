@@ -31,12 +31,13 @@
         }
 
         .marquee-content {
-            display: inline-flex;
-            animation: marquee 15s linear infinite;
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
         }
 
         .marquee-content span {
-            padding: 0 40px;
+            padding: 0 25px;
             display: inline-block;
         }
 
@@ -100,8 +101,9 @@
             transition: 0.3s;
         }
 
+        /* Khi hover hoặc khi mục đang active: Chữ chuyển sang trắng, gạch chân màu cam */
         .nav-links a:hover, .nav-links a.active {
-            color: #ff5500;
+            color: #ffffff;
             border-bottom: 2px solid #ff5500;
             padding-bottom: 5px;
         }
@@ -195,6 +197,14 @@
 
     <div class="marquee-wrapper">
         <div class="marquee-content">
+            <span>• DENJI STORE</span>
+            <span>• DENJI STORE</span>
+            <span>• DENJI STORE</span>
+            <span>• DENJI STORE</span>
+            <span>• DENJI STORE</span>
+            <span>• DENJI STORE</span>
+            <span>• DENJI STORE</span>
+            <span>• DENJI STORE</span>
             <span>• DENJI STORE</span>
             <span>• DENJI STORE</span>
             <span>• DENJI STORE</span>
