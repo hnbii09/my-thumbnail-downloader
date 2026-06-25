@@ -46,18 +46,19 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Giữ nguyên thanh điều hướng vừa vặn */
+        /* Thay đổi max-width bằng với phần hero-container bên dưới và đồng bộ padding */
         .header-nav {
-            max-width: 1100px;
+            max-width: 1430px; 
             margin: 30px auto;
             background: rgba(20, 20, 20, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 12px 24px;
+            padding: 18px 40px; /* Tăng padding để cân xứng với chiều rộng mới */
             border-radius: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             backdrop-filter: blur(10px);
+            box-sizing: border-box;
         }
 
         .logo-area {
@@ -102,20 +103,21 @@
             padding-bottom: 5px;
         }
 
-        /* --- PHẦN GIAO DIỆN BÊN DƯỚI: TĂNG ~30% KÍCH THƯỚC --- */
+        /* --- PHẦN GIAO DIỆN BÊN DƯỚI --- */
         .hero-container {
-            max-width: 1430px; /* Tăng 30% so với 1100px */
-            margin: 90px auto; /* Thêm không gian thở bên trên và dưới */
+            max-width: 1430px; 
+            margin: 90px auto; 
             padding: 0 40px;
             display: grid;
             grid-template-columns: 1.4fr 1fr;
-            gap: 60px; /* Nới rộng khoảng cách giữa 2 cột */
+            gap: 60px; 
             align-items: center;
+            box-sizing: border-box;
         }
 
         .hero-text h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 70px; /* Tăng 30% so với 54px */
+            font-size: 70px; 
             font-weight: 900;
             line-height: 1.05;
             margin: 0 0 25px 0;
@@ -125,14 +127,14 @@
 
         .hero-text h1 .outline {
             color: transparent;
-            -webkit-text-stroke: 2.5px #ff5500; /* Làm dày đường stroke một chút cho hợp kích thước chữ lớn */
+            -webkit-text-stroke: 2.5px #ff5500; 
             text-stroke: 2.5px #ff5500;
             paint-order: stroke fill;
         }
 
         .hero-text p {
             color: #888888;
-            font-size: 20px; /* Tăng từ 15px lên 20px */
+            font-size: 20px; 
             margin-top: 25px;
         }
 
@@ -145,7 +147,7 @@
         .stat-box {
             background: #141414;
             border: 1px solid #222;
-            padding: 26px; /* Tăng đệm bên trong hộp */
+            padding: 26px; 
             border-radius: 18px;
             flex: 1;
             text-align: left;
@@ -153,7 +155,7 @@
 
         .stat-box h2 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 42px; /* Tăng từ 32px lên 42px */
+            font-size: 42px; 
             color: #ff5500;
             margin: 0;
         }
@@ -162,7 +164,7 @@
             margin: 6px 0 0 0;
             color: #ffffff;
             font-weight: 700;
-            font-size: 14px; /* Tăng từ 11px lên 14px */
+            font-size: 14px; 
             text-transform: uppercase;
             letter-spacing: 1.5px;
         }
@@ -172,12 +174,12 @@
             color: #ffffff;
             display: block;
             text-align: center;
-            padding: 22px; /* Tăng độ dày nút bấm */
+            padding: 22px; 
             border-radius: 16px;
             text-decoration: none;
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
-            font-size: 21px; /* Tăng từ 16px lên ~21px */
+            font-size: 21px; 
             letter-spacing: 1px;
             box-shadow: 0 12px 35px rgba(255, 85, 0, 0.35);
             transition: transform 0.3s, box-shadow 0.3s;
