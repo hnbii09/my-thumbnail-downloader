@@ -8,9 +8,39 @@
     <style>
         body { margin: 0; padding: 0; background-color: #0d0d0d; font-family: 'Plus Jakarta Sans', sans-serif; color: #ffffff; overflow-x: hidden; scroll-behavior: smooth; }
 
-        .marquee-wrapper { background: linear-gradient(90deg, #f65602, #ff6a00); color: #000000; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14px; letter-spacing: 2px; padding: 15px 0; text-transform: uppercase; overflow: hidden; display: flex; white-space: nowrap; box-shadow: 0 5px 20px rgba(246, 86, 2, 0.4); width: 100%; }
-        .marquee-content { display: flex; animation: marquee 20s linear infinite; gap: 40px; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-wrapper {
+            background: linear-gradient(90deg, #f65602, #ff6a00);
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: 2px;
+            padding: 15px 0;
+            text-transform: uppercase;
+            overflow: hidden;
+            display: flex;
+            white-space: nowrap;
+            box-shadow: 0 5px 20px rgba(246, 86, 2, 0.4);
+            width: 100%;
+        }
+
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            min-width: 100%;
+            gap: 40px;
+            animation: marquee 20s linear infinite;
+        }
+        
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
 
         .header-nav { max-width: 1430px; margin: 30px auto; background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 18px 40px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); box-sizing: border-box; position: sticky; top: 20px; z-index: 1000; }
         .logo-area { display: flex; align-items: center; gap: 12px; }
@@ -114,10 +144,29 @@
 <body id="top">
 
     <div class="marquee-wrapper">
-        <div class="marquee-content" id="marquee">
-            <span>• DENJI STORE</span> <span>• THUMBNAIL</span> 
-            <span>• DENJI STORE</span> <span>• THUMBNAIL</span>
+
+        <div class="marquee-content">
+            <span>• DENJI STORE</span>
+            <span>• THUMBNAIL</span>
+            <span>• DENJI STORE</span>
+            <span>• THUMBNAIL</span>
+            <span>• DENJI STORE</span>
+            <span>• THUMBNAIL</span>
+            <span>• DENJI STORE</span>
+            <span>• THUMBNAIL</span>
         </div>
+    
+        <div class="marquee-content" aria-hidden="true">
+            <span>• DENJI STORE</span>
+            <span>• THUMBNAIL</span>
+            <span>• DENJI STORE</span>
+            <span>• THUMBNAIL</span>
+            <span>• DENJI STORE</span>
+            <span>• THUMBNAIL</span>
+            <span>• DENJI STORE</span>
+            <span>• THUMBNAIL</span>
+        </div>
+
     </div>
 
     <nav class="header-nav">
@@ -199,8 +248,6 @@
     </section>
 
     <script>
-        const marquee = document.getElementById('marquee');
-        marquee.innerHTML += marquee.innerHTML;
 
         document.querySelectorAll('[data-youtube]').forEach(el => {
             const id = el.getAttribute('data-youtube');
