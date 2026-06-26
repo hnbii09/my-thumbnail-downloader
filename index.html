@@ -2,25 +2,37 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1920, initial-scale=0.2, maximum-scale=1.0, user-scalable=yes">
     <title>DENJI STORE - Ultra Thumbnails</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; padding: 0; background-color: #0d0d0d; font-family: 'Plus Jakarta Sans', sans-serif; color: #ffffff; overflow-x: hidden; scroll-behavior: smooth; }
-
+    
+    ::-webkit-scrollbar{ width:10px; } ::-webkit-scrollbar-track{ background:transparent; } ::-webkit-scrollbar-thumb{ background:#aaaaaa; border-radius:999px; } ::-webkit-scrollbar-thumb:hover{ background:#bdbdbd; } /* Firefox */ html{ scrollbar-width:thin; scrollbar-color:#aaaaaa transparent; }
+    
     .marquee-wrapper{
-        background:linear-gradient(90deg,#f65602,#ff6a00);
-        color:#000;
-        font-family:'Montserrat',sans-serif;
-        font-weight:900;
-        font-size:14px;
-        letter-spacing:2px;
-        padding:15px 0;
-        text-transform:uppercase;
-        overflow:hidden;
-        white-space:nowrap;
-        box-shadow:0 5px 20px rgba(246,86,2,.4);
-        width:100%;
+        position: relative;
+
+        width: 97%;
+        max-width: 1900px;
+        margin: 20px auto 0;
+
+        background: linear-gradient(90deg,#f65602,#ff6a00);
+        color: #000;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 14px;
+        letter-spacing: 2px;
+        padding: 15px 0;
+
+        text-transform: uppercase;
+        overflow: hidden;
+        white-space: nowrap;
+
+        border-radius: 16px;
+        box-shadow: 0 5px 20px rgba(246,86,2,.4);
+
+        box-sizing: border-box;
     }
     
     .marquee-track{
@@ -46,7 +58,7 @@
         }
     }
 
-        .header-nav { max-width: 1430px; margin: 30px auto; background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 18px 40px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); box-sizing: border-box; position: sticky; top: 20px; z-index: 1000; }
+        .header-nav { max-width: 1600px; margin: 30px auto; background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 18px 40px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); box-sizing: border-box; position: sticky; top: 20px; z-index: 1000; }
         .logo-area { display: flex; align-items: center; gap: 12px; }
         .logo-icon { width: 60px; height: 60px; border-radius: 20px; object-fit: cover; }
         .logo-text h3 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: 26px; letter-spacing: -0.5px; }
@@ -118,7 +130,7 @@
         .review-info h4 {
             margin: 0;
             font-size: 18px;
-            color: #fff;
+            color: #ffffff;
         }
 
         .review-info span {
