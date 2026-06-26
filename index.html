@@ -8,39 +8,43 @@
     <style>
         body { margin: 0; padding: 0; background-color: #0d0d0d; font-family: 'Plus Jakarta Sans', sans-serif; color: #ffffff; overflow-x: hidden; scroll-behavior: smooth; }
 
-        .marquee-wrapper {
-            background: linear-gradient(90deg, #f65602, #ff6a00);
-            color: #000000;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 14px;
-            letter-spacing: 2px;
-            padding: 15px 0;
-            text-transform: uppercase;
-            overflow: hidden;
-            display: flex;
-            white-space: nowrap;
-            box-shadow: 0 5px 20px rgba(246, 86, 2, 0.4);
-            width: 100%;
+    .marquee-wrapper{
+        background:linear-gradient(90deg,#f65602,#ff6a00);
+        color:#000;
+        font-family:'Montserrat',sans-serif;
+        font-weight:900;
+        font-size:14px;
+        letter-spacing:2px;
+        padding:15px 0;
+        text-transform:uppercase;
+        overflow:hidden;
+        white-space:nowrap;
+        box-shadow:0 5px 20px rgba(246,86,2,.4);
+        width:100%;
+    }
+    
+    .marquee-track{
+        display:flex;
+        width:max-content;
+        animation:marquee 28s linear infinite;
+    }
+    
+    .marquee-content{
+        display:flex;
+        align-items:center;
+        gap:40px;
+        flex-shrink:0;
+        padding-right:40px;
+    }
+    
+    @keyframes marquee{
+        from{
+            transform:translateX(0);
         }
-
-        .marquee-content {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-            min-width: 100%;
-            gap: 40px;
-            animation: marquee 20s linear infinite;
+        to{
+            transform:translateX(-50%);
         }
-        
-        @keyframes marquee {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(-100%);
-            }
-        }
+    }
 
         .header-nav { max-width: 1430px; margin: 30px auto; background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 18px 40px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); box-sizing: border-box; position: sticky; top: 20px; z-index: 1000; }
         .logo-area { display: flex; align-items: center; gap: 12px; }
@@ -143,17 +147,17 @@
 </head>
 <body id="top">
 
-    <div class="marquee-wrapper">
-
-        <div class="marquee-content">
-            <span>• DENJI STORE</span>
-            <span>• THUMBNAIL</span>
-            <span>• DENJI STORE</span>
-            <span>• THUMBNAIL</span>
-            <span>• DENJI STORE</span>
-            <span>• THUMBNAIL</span>
-            <span>• DENJI STORE</span>
-            <span>• THUMBNAIL</span>
+            <div class="marquee-wrapper">
+        
+            <div class="marquee-track" id="marqueeTrack">
+        
+                <div class="marquee-content" id="marquee">
+                    <span>• DENJI STORE</span>
+                    <span>• THUMBNAIL</span>
+                </div>
+        
+            </div>
+        
         </div>
     
         <div class="marquee-content" aria-hidden="true">
@@ -249,6 +253,12 @@
 
     <script>
 
+        const marquee = document.getElementById("marquee");
+const marqueeTrack = document.getElementById("marqueeTrack");
+
+while (marqueeTrack.scrollWidth < window.innerWidth * 3) {
+    marqueeTrack.innerHTML += marquee.outerHTML;
+}
         document.querySelectorAll('[data-youtube]').forEach(el => {
             const id = el.getAttribute('data-youtube');
             el.innerHTML = `<a href="https://www.youtube.com/watch?v=${id}" target="_blank" class="video-card"><img src="https://i.ytimg.com/vi/${id}/maxresdefault.jpg" alt="Thumbnail"></a>`;
