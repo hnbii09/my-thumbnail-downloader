@@ -81,21 +81,32 @@
 
     .review-item { min-width: 100%; box-sizing: border-box; }
     
-    /* SỬA LỖI LỆCH TRÊN MOBILE: Căn giữa đều toàn bộ footer */
+    /* FIX LỖI LỆCH HOÀN TOÀN TRÊN MOBILE */
     .site-footer {
-        padding: 30px 40px;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 25px;
+        padding: 40px 20px;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 30px !important;
     }
     
     .footer-left {
-        justify-content: center;
+        order: 2; /* Đưa bản quyền cửa hàng xuống dưới cùng */
+        justify-content: center !important;
+        width: 100%;
+        text-align: center;
     }
     
     .footer-right {
-        align-items: center; /* Đảm bảo cả icon và chữ developer đều căn giữa thẳng hàng */
+        order: 1; /* Đưa cụm icon và developer lên trên */
+        align-items: center !important; 
+        width: 100%;
+        text-align: center;
+    }
+
+    .social-icons-wrapper {
+        justify-content: center !important;
+        margin-bottom: 5px;
     }
 }
         .header-nav { max-width: 1600px; margin: 30px auto; background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 18px 40px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); box-sizing: border-box; position: sticky; top: 20px; z-index: 1000; }
@@ -202,7 +213,7 @@
             opacity: 0.8;
         }
 
-        /* Desktop Layout (Giữ nguyên cấu trúc Trái/Phải của bạn) */
+        /* Desktop Layout */
         .site-footer {
             display: flex;
             justify-content: space-between;
@@ -240,6 +251,7 @@
         .social-icon-link { display: inline-block; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         
         .social-icon-link img { 
+            /* ĐÃ TĂNG KÍCH THƯỚC ICON LÊN 50PX */
             width: 50px; 
             height: 50px; 
             object-fit: contain; 
