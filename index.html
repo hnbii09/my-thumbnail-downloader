@@ -59,16 +59,13 @@
     }
 
 @media (max-width: 768px) {
-    /* Đảm bảo nội dung không vượt quá màn hình */
     body { overflow-x: hidden; }
 
-    /* Chỉnh lại Header cho gọn */
     .header-nav {
-        position: fixed; /* Thay sticky bằng fixed nếu nó bị nhảy khi cuộn */
+        position: fixed;
         width: 100%;
     }
 
-    /* Chuyển Hero từ 2 cột thành 1 cột */
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
@@ -77,11 +74,9 @@
     }
     .hero-text h1 { font-size: 40px; }
 
-    /* Xếp dọc sản phẩm */
     .product-grid { grid-template-columns: 1fr; }
 
-    /* Review hiển thị tốt hơn */
-    .review-item { min-width: 80vw; }
+    .review-item { min-width: 100%; box-sizing: border-box; }
 }
         .header-nav { max-width: 1600px; margin: 30px auto; background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 18px 40px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); box-sizing: border-box; position: sticky; top: 20px; z-index: 1000; }
         .logo-area { display: flex; align-items: center; gap: 12px; }
@@ -112,24 +107,29 @@
         .video-card:hover { transform: translateY(-10px); }
         .video-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
 
+        /* ĐÃ ĐIỀU CHỈNH ĐỘ DÀI RỘNG BẰNG THANH NGANG CAM */
         .review-slider {
-            overflow:hidden;
-            overflow-y:hidden;
-            display:block;
-            width:100%;
-            cursor:grab;
-            user-select:none;
+            overflow: hidden;
+            display: block;
+            width: 97%;             /* Khớp hoàn toàn với độ rộng thanh cam */
+            max-width: 1900px;      /* Giới hạn tối đa giống thanh cam */
+            height: 450px;          
+            margin: 0 auto;         /* Căn giữa đều hai bên */
+            position: relative;
+            cursor: grab;
+            user-select: none;
         }
         .review-slider:active{cursor:grabbing;}
 
         .review-track {
-            display:flex;
-            gap:30px;
-            width:max-content;
+            display: flex;
+            flex-direction: column; 
+            gap: 30px;
+            width: 100%;
         }
 
         .review-item {
-            min-width: 350px;
+            width: 100%;
             background: #141414;
             padding: 25px;
             border-radius: 20px;
@@ -137,6 +137,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            box-sizing: border-box;
         }
 
         .review-header {
@@ -243,24 +244,8 @@
         <div class="divider"></div>
         <h2 class="title">REVIEWS</h2>
         <div class="review-slider">
-            <div class="review-track">
+            <div class="review-track" id="reviewTrack">
                 
-                <div class="review-item">
-                    <div class="review-header">
-                        <img src="pepe.jpg" class="review-avatar" alt="Avatar">
-                        <div class="review-info">
-                            <h4>@pepetheninja</h4>
-                            <span>40K+ SUBSCRIBERS</span>
-                        </div>
-                    </div>
-                    <p class="review-text">"Denji was great to work with. He was always kind, quick to respond, and very easy to communicate with. His thumbnails are good, though I think there’s still some room for improvement. I’d rate him 4.5/5 for professionalism and 3.5/5 for the quality of his work. Overall, I’d definitely recommend working with him!"</p>
-
-                    <div class="review-date">
-                        June 25, 2026
-                    </div>
-
-                </div>
-
                 <div class="review-item">
                     <div class="review-header">
                         <img src="sillyrent.jpg" class="review-avatar" alt="Avatar">
@@ -270,11 +255,23 @@
                         </div>
                     </div>
                     <p class="review-text">"Very easy to work with, gave me raw version and asked for any changes. Would highly recommend!"</p>
-
                     <div class="review-date">
                         June 25, 2026
                     </div>
+                </div>
 
+                <div class="review-item">
+                    <div class="review-header">
+                        <img src="pepe.jpg" class="review-avatar" alt="Avatar">
+                        <div class="review-info">
+                            <h4>@pepetheninja</h4>
+                            <span>40K+ SUBSCRIBERS</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"Denji was great to work with. He was always kind, quick to respond, and very easy to communicate with. His thumbnails are good, though I think there’s still some room for improvement. I’d rate him 4.5/5 for professionalism and 3.5/5 for the quality of his work. Overall, I’d definitely recommend working with him!"</p>
+                    <div class="review-date">
+                        June 25, 2026
+                    </div>
                 </div>
 
             </div>
@@ -284,10 +281,9 @@
     <script>
     function adjustScale() {
         var screenWidth = window.screen.width;
-        var designWidth = 1200; // Chiều rộng thiết kế của bạn
+        var designWidth = 1200; 
         var scale = screenWidth / designWidth;
         
-        // Chỉ áp dụng thu nhỏ trên điện thoại
         if (screenWidth < 768) {
             document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=' + designWidth + ', initial-scale=' + scale + ', maximum-scale=2.0, user-scalable=yes');
         }
@@ -295,50 +291,67 @@
     window.onload = adjustScale;
     window.onresize = adjustScale;
 
-        const marquee = document.getElementById("marquee");
-const marqueeTrack = document.getElementById("marqueeTrack");
+    const marquee = document.getElementById("marquee");
+    const marqueeTrack = document.getElementById("marqueeTrack");
 
-while (marqueeTrack.scrollWidth < window.innerWidth * 3) {
-    marqueeTrack.innerHTML += marquee.outerHTML;
-}
-        document.querySelectorAll('[data-youtube]').forEach(el => {
-            const id = el.getAttribute('data-youtube');
-            el.innerHTML = `<a href="https://www.youtube.com/watch?v=${id}" target="_blank" class="video-card"><img src="https://i.ytimg.com/vi/${id}/maxresdefault.jpg" alt="Thumbnail"></a>`;
-        });
+    while (marqueeTrack.scrollWidth < window.innerWidth * 3) {
+        marqueeTrack.innerHTML += marquee.outerHTML;
+    }
+    document.querySelectorAll('[data-youtube]').forEach(el => {
+        const id = el.getAttribute('data-youtube');
+        el.innerHTML = `<a href="https://www.youtube.com/watch?v=${id}" target="_blank" class="video-card"><img src="https://i.ytimg.com/vi/${id}/maxresdefault.jpg" alt="Thumbnail"></a>`;
+    });
         
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach(item => {
-            item.addEventListener('click', function() {
-                navItems.forEach(n => n.classList.remove('active'));
-                this.classList.add('active');
-            });
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            navItems.forEach(n => n.classList.remove('active'));
+            this.classList.add('active');
         });
+    });
 
-const reviewSlider=document.querySelector('.review-slider');
-const reviewTrack=document.querySelector('.review-track');
-reviewTrack.innerHTML+=reviewTrack.innerHTML;
-let dragging=false,startX=0,startScroll=0,speed=0.6;
-function loop(){
- if(!dragging){
-   reviewSlider.scrollLeft+=speed;
-   if(reviewSlider.scrollLeft>=reviewTrack.scrollWidth/2) reviewSlider.scrollLeft=0;
- }
- requestAnimationFrame(loop);
-}
-loop();
-reviewSlider.addEventListener('mousedown',e=>{dragging=true;startX=e.pageX;startScroll=reviewSlider.scrollLeft;});
-window.addEventListener('mouseup',()=>dragging=false);
-window.addEventListener('mousemove',e=>{
- if(!dragging) return;
- e.preventDefault();
- reviewSlider.scrollLeft=startScroll-(e.pageX-startX);
-});
-reviewSlider.addEventListener('touchstart',e=>{dragging=true;startX=e.touches[0].pageX;startScroll=reviewSlider.scrollLeft;},{passive:true});
-reviewSlider.addEventListener('touchmove',e=>{
- if(!dragging) return;
- reviewSlider.scrollLeft=startScroll-(e.touches[0].pageX-startX);
-},{passive:true});
-reviewSlider.addEventListener('touchend',()=>dragging=false);
+    const reviewSlider = document.querySelector('.review-slider');
+    const reviewTrack = document.getElementById('reviewTrack');
+
+    const originalContent = reviewTrack.innerHTML;
+    reviewTrack.innerHTML = originalContent + originalContent + originalContent;
+
+    let dragging = false, startY = 0, startScroll = 0, speed = 0.6;
+
+    function loop() {
+        if (!dragging) {
+            reviewSlider.scrollTop += speed;
+            if (reviewSlider.scrollTop >= reviewTrack.scrollHeight / 3) {
+                reviewSlider.scrollTop = 0;
+            }
+        }
+        requestAnimationFrame(loop);
+    }
+    window.addEventListener('blur', () => dragging = false);
+    setTimeout(loop, 200);
+
+    reviewSlider.addEventListener('mousedown', e => {
+        dragging = true;
+        startY = e.pageY;
+        startScroll = reviewSlider.scrollTop;
+    });
+    window.addEventListener('mouseup', () => dragging = false);
+    window.addEventListener('mousemove', e => {
+        if (!dragging) return;
+        e.preventDefault();
+        reviewSlider.scrollTop = startScroll - (e.pageY - startY);
+    });
+
+    reviewSlider.addEventListener('touchstart', e => {
+        dragging = true;
+        startY = e.touches[0].pageY;
+        startScroll = reviewSlider.scrollTop;
+    }, {passive: true});
+    reviewSlider.addEventListener('touchmove', e => {
+        if (!dragging) return;
+        reviewSlider.scrollTop = startScroll - (e.touches[0].pageY - startY);
+    }, {passive: true});
+    reviewSlider.addEventListener('touchend', () => dragging = false);
 
     </script>
 </body>
