@@ -307,6 +307,122 @@
             color: #f65602;
             opacity: 1;
         }
+
+        /* Tối ưu hóa giao diện hoàn toàn dành riêng cho điện thoại */
+        @media (max-width: 768px) {
+            .marquee-wrapper {
+                width: 95%;
+                margin-top: 15px;
+                margin-bottom: 25px;
+                padding: 12px 0;
+                font-size: 14px;
+            }
+            .marquee-content {
+                gap: 15px;
+                padding-right: 15px;
+            }
+
+            .header-nav {
+                margin: 15px auto;
+                padding: 12px 20px;
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .nav-links a {
+                margin: 0 10px;
+                font-size: 15px;
+            }
+            .separator {
+                margin-left: 0;
+                font-size: 15px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-top: 40px;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 52px;
+                line-height: 1.1;
+            }
+            .hero-text p {
+                font-size: 15px;
+                margin-top: 15px;
+            }
+
+            .hero-right {
+                transform: none;
+                gap: 20px;
+            }
+            .stats-grid {
+                width: 100%;
+                gap: 15px;
+            }
+            .stat-box {
+                padding: 20px;
+                border-radius: 16px;
+                text-align: center;
+            }
+            .stat-box h2 {
+                font-size: 42px;
+            }
+            .stat-box p {
+                font-size: 15px;
+            }
+            .cta-btn {
+                font-size: 22px;
+                padding: 16px;
+                margin: 0;
+            }
+            .cta-btn:hover {
+                transform: translateY(-4px);
+            }
+
+            .section-container {
+                margin: 40px auto;
+            }
+            .title {
+                font-size: 34px;
+                margin-bottom: 25px;
+            }
+            .divider {
+                margin: 25px auto;
+            }
+
+            /* Chuyển các lưới hiển thị sang dạng 1 cột (Chiều dọc) trên Mobile */
+            .product-grid, .showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                width: 100%;
+            }
+
+            .review-slider {
+                height: 480px;
+            }
+            .review-item {
+                padding: 20px;
+            }
+            .review-info h4 {
+                font-size: 16px;
+            }
+
+            .site-footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 25px;
+                padding: 30px 0;
+            }
+            .footer-right {
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -381,7 +497,7 @@
                     
                     <div class="review-item">
                         <div class="review-header">
-                            <img src="https://i.postimg.cc/tR2BxNfS/channels4-profile.jpg" class="review-avatar" alt="Avatar">
+                            <img src="https://i.postimg.cc/tR2BxFfS/channels4-profile.jpg" class="review-avatar" alt="Avatar">
                             <div class="review-info">
                                 <h4>@Orbitzmc</h4>
                                 <span>2K+ SUBSCRIBERS</span>
