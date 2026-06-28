@@ -13,11 +13,18 @@
     
     ::-webkit-scrollbar{ width:10px; } ::-webkit-scrollbar-track{ background:transparent; } ::-webkit-scrollbar-thumb{ background:#aaaaaa; border-radius:999px; } ::-webkit-scrollbar-thumb:hover{ background:#bdbdbd; } html{ scrollbar-width:thin; scrollbar-color:#aaaaaa transparent; }
     
-    /* Đưa thanh chữ chạy độc lập ra ngoài để kéo dài hơn trên PC */
+    /* Khung bao bọc nội dung rộng 96% để chừa lại 2 bên 1 khoảng trống nhỏ đều đặn, không bị lấp đầy */
+    .content-wrapper {
+        width: 96%;
+        max-width: 1600px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
     .marquee-wrapper{
         position: relative;
-        width: 98%; /* Tăng chiều rộng lên 98% giúp thanh màu cam dài sát hai bên rìa màn hình trên PC */
-        max-width: 1660px; /* Tăng max-width để dài hơn tổng thể nội dung bên dưới */
+        width: 100%;
+        max-width: 1600px;
         margin-top: 35px;
         margin-left: auto;
         margin-right: auto;
@@ -38,14 +45,6 @@
         border-radius: 16px;
         box-shadow: 0 5px 20px rgba(246,86,2,.4);
 
-        box-sizing: border-box;
-    }
-
-    /* Khung bao bọc nội dung phía dưới giữ nguyên độ rộng để tạo khoảng trống nhỏ 2 bên */
-    .content-wrapper {
-        width: 96%;
-        max-width: 1600px;
-        margin: 0 auto;
         box-sizing: border-box;
     }
     
@@ -201,7 +200,7 @@
             opacity: 0.8;
         }
 
-        /* Duy trì tỷ lệ kéo rộng lề trái phải đồng bộ của Footer */
+        /* GIỮ NGUYÊN HOÀN TOÀN bố cục tràn mép hai bên của Footer */
         .site-footer {
             display: flex;
             justify-content: space-between;
@@ -257,16 +256,16 @@
 </head>
 <body>
 
-    <div class="marquee-wrapper">
-        <div class="marquee-track" id="marqueeTrack">
-            <div class="marquee-content" id="marquee">
-                <span>• DENJI STORE</span>
-                <span>• THUMBNAIL</span>
+    <div class="content-wrapper">
+        <div class="marquee-wrapper">
+            <div class="marquee-track" id="marqueeTrack">
+                <div class="marquee-content" id="marquee">
+                    <span>• DENJI STORE</span>
+                    <span>• THUMBNAIL</span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="content-wrapper">
         <nav class="header-nav">
             <div class="logo-area">
                 <img src="denjistore.jpg" class="logo-icon">
@@ -388,9 +387,10 @@
     </footer>
 
     <script>
+    // Hàm JavaScript tự động đo và scale chuẩn xác giao diện thu nhỏ
     function adjustScale() {
         var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        var designWidth = 1680; // Thiết lập độ rộng viewport để tối ưu hóa tỷ lệ thu nhỏ và hiển thị thanh cam dài hơn
+        var designWidth = 1660; // Thêm độ lệch chuẩn để tạo viền trống ở hai bên tinh tế hơn
         var scale = screenWidth / designWidth;
         
         if (screenWidth < 1200) {
@@ -468,4 +468,8 @@
 
     function renderLoop() {
         if (!isDragging) {
-            currentY -=
+            currentY -= speed; 
+            
+            if (Math.abs(currentY) >= baseHeight) {
+                currentY += baseHeight;
+         
