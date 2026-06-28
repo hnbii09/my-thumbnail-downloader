@@ -13,11 +13,10 @@
     
     ::-webkit-scrollbar{ width:10px; } ::-webkit-scrollbar-track{ background:transparent; } ::-webkit-scrollbar-thumb{ background:#aaaaaa; border-radius:999px; } ::-webkit-scrollbar-thumb:hover{ background:#bdbdbd; } html{ scrollbar-width:thin; scrollbar-color:#aaaaaa transparent; }
     
-    /* Đưa thanh chữ chạy độc lập ra ngoài để kéo dài hơn trên PC */
     .marquee-wrapper{
         position: relative;
-        width: 98%; /* Tăng chiều rộng lên 98% giúp thanh màu cam dài sát hai bên rìa màn hình trên PC */
-        max-width: 1850px; /* Tăng max-width để dài hơn tổng thể nội dung bên dưới */
+        width: 98%; 
+        max-width: 1850px;
         margin-top: 35px;
         margin-left: auto;
         margin-right: auto;
@@ -118,7 +117,7 @@
         }
 
         .product-grid, .showcase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .video-card, .image-card { background: #141414; border-radius: 16px; overflow: hidden; display: block; text-decoration: none; transition: 0.3s; }
+        .video-card, .image-card { background: #141414; border-radius: 16px; overflow: hidden; display: block; text-decoration: none; transition: 0.3s; cursor: pointer; }
         .video-card:hover, .image-card:hover { transform: translateY(-10px); }
         .video-card img, .image-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
 
@@ -200,7 +199,6 @@
             opacity: 0.8;
         }
 
-        /* Duy trì tỷ lệ kéo rộng lề trái phải đồng bộ của Footer */
         .site-footer {
             display: flex;
             justify-content: space-between;
@@ -251,6 +249,63 @@
         .social-icon-link:hover img { 
             filter: grayscale(0%) brightness(1); 
             opacity: 1; 
+        }
+
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-img {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .lightbox-overlay.active .lightbox-img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            font-size: 52px;
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 300;
+            cursor: pointer;
+            line-height: 1;
+            user-select: none;
+            transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+            opacity: 0.7;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.08);
+            color: #f65602;
+            opacity: 1;
         }
     </style>
 </head>
@@ -307,13 +362,13 @@
             <h2 class="title">SHOWCASE</h2>
             <div class="showcase-grid">
                 <div class="image-card">
-                    <img src="https://i.postimg.cc/m2jFmd4q/SHOWCASE-V3.png" alt="">
+                    <img src="https://i.postimg.cc/m2jFmd4q/SHOWCASE-V3.png" alt="Showcase 1">
                 </div>
                 <div class="image-card">
-                    <img src="https://i.postimg.cc/J4kbK30Q/ducktai.png" alt="">
+                    <img src="https://i.postimg.cc/J4kbK30Q/ducktai.png" alt="Showcase 2">
                 </div>
                 <div class="image-card">
-                    <img src="https://i.postimg.cc/ZRwctTzz/1.jpg" alt="">
+                    <img src="https://i.postimg.cc/rwwY26xd/SHOWCASE-V36.png" alt="Showcase 3">
                 </div>
             </div>
         </section>
@@ -385,6 +440,11 @@
             <p class="site-credit">&copy; Developer: Denji</p>
         </div>
     </footer>
+
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Zoomed Showcase">
+    </div>
 
     <script>
     const marquee = document.getElementById("marquee");
@@ -505,6 +565,29 @@
 
     window.addEventListener('blur', () => {
         isDragging = false;
+    });
+
+    const lightboxOverlay = document.getElementById('lightboxOverlay');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const showcaseImages = document.querySelectorAll('.showcase-grid .image-card img');
+
+    showcaseImages.forEach(img => {
+        img.addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightboxImg.src = img.src;
+            lightboxOverlay.classList.add('active');
+        });
+    });
+
+    lightboxClose.addEventListener('click', () => {
+        lightboxOverlay.classList.remove('active');
+    });
+
+    lightboxOverlay.addEventListener('click', (e) => {
+        if (e.target !== lightboxImg && e.target !== lightboxClose) {
+            lightboxOverlay.classList.remove('active');
+        }
     });
     </script>
 </body>
