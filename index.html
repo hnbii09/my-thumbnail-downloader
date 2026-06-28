@@ -13,10 +13,9 @@
     
     ::-webkit-scrollbar{ width:10px; } ::-webkit-scrollbar-track{ background:transparent; } ::-webkit-scrollbar-thumb{ background:#aaaaaa; border-radius:999px; } ::-webkit-scrollbar-thumb:hover{ background:#bdbdbd; } html{ scrollbar-width:thin; scrollbar-color:#aaaaaa transparent; }
     
-    /* Khung bao bọc nội dung rộng 96% để chừa lại 2 bên 1 khoảng trống nhỏ đều đặn, không bị lấp đầy */
+    /* Khung bao bọc giúp toàn bộ nội dung căn giữa tuyệt đối trên mọi độ phân giải màn hình */
     .content-wrapper {
-        width: 96%;
-        max-width: 1600px;
+        width: 1600px;
         margin: 0 auto;
         box-sizing: border-box;
     }
@@ -200,13 +199,12 @@
             opacity: 0.8;
         }
 
-        /* GIỮ NGUYÊN HOÀN TOÀN bố cục tràn mép hai bên của Footer */
+        /* GIỮ NGUYÊN HOÀN TOÀN bố cục dàn đều hai bên trái/phải của Footer */
         .site-footer {
             display: flex;
             justify-content: space-between;
             align-items: flex-end; 
-            width: 96%;
-            max-width: 1600px;
+            width: 1600px;
             margin: 0 auto;
             padding: 40px 0; 
             box-sizing: border-box;
@@ -387,10 +385,10 @@
     </footer>
 
     <script>
-    // Hàm JavaScript tự động đo và scale chuẩn xác giao diện thu nhỏ
+    // Hàm JavaScript tự động tính toán viewport ép hiển thị giao diện PC thu nhỏ và căn chỉnh trung tâm tuyệt đối
     function adjustScale() {
         var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        var designWidth = 1660; // Thêm độ lệch chuẩn để tạo viền trống ở hai bên tinh tế hơn
+        var designWidth = 1640; // Đặt kích thước nền tảng chuẩn để bao quát trọn vẹn 1600px kèm khoảng đệm lề hai bên
         var scale = screenWidth / designWidth;
         
         if (screenWidth < 1200) {
