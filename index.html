@@ -17,7 +17,7 @@
         position: relative;
 
         width: 97%;
-        max-width: 1900px;
+        max-width: 1600px; /* Điều chỉnh max-width bằng với khung layout chính */
         margin-top: 35px;
         margin-left: auto;
         margin-right: auto;
@@ -64,7 +64,7 @@
         }
     }
 
-    /* Đã lược bỏ các chỉnh sửa thay đổi bố cục mobile để giữ nguyên giao diện máy tính */
+    /* Đã loại bỏ hoàn toàn thay đổi bố cục mobile để giữ nguyên giao diện máy tính */
     @media (max-width: 768px) {
         body { overflow-x: hidden; }
     }
@@ -194,6 +194,7 @@
             opacity: 0.8;
         }
 
+        /* Giữ nguyên căn đều hai bên trái/phải cho Footer */
         .site-footer {
             display: flex;
             justify-content: space-between;
@@ -377,20 +378,22 @@
     </footer>
 
     <script>
-    // Hàm JavaScript tự động đo chiều rộng màn hình điện thoại và ép tỷ lệ thu nhỏ như máy tính
+    // Hàm JavaScript tự động tính tỷ lệ màn hình để ép hiển thị giao diện PC thu nhỏ chính giữa
     function adjustScale() {
-        var screenWidth = window.screen.width;
-        var designWidth = 1440; // Chiều rộng chuẩn của PC máy tính
+        var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var designWidth = 1680; // Thiết lập chiều rộng bao quát vừa vặn để căn lề chính giữa đẹp nhất
         var scale = screenWidth / designWidth;
         
-        if (screenWidth < 1024) {
-            document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=' + designWidth + ', initial-scale=' + scale + ', maximum-scale=2.0, user-scalable=yes');
+        if (screenWidth < 1200) {
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=' + designWidth + ', initial-scale=' + scale + ', maximum-scale=' + scale + ', user-scalable=yes');
         } else {
             document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0');
         }
     }
-    window.onload = adjustScale;
-    window.onresize = adjustScale;
+    // Chạy ngay khi tải và khi thay đổi kích thước
+    adjustScale();
+    window.addEventListener('resize', adjustScale);
+    window.addEventListener('orientationchange', adjustScale);
 
     const marquee = document.getElementById("marquee");
     const marqueeTrack = document.getElementById("marqueeTrack");
