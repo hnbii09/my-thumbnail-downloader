@@ -308,6 +308,7 @@
             opacity: 1;
         }
 
+        /* Tối ưu hóa giao diện hoàn toàn dành riêng cho điện thoại */
         @media (max-width: 768px) {
             .marquee-wrapper {
                 width: 95%;
@@ -394,6 +395,7 @@
                 margin: 25px auto;
             }
 
+            /* Chuyển các lưới hiển thị sang dạng 1 cột (Chiều dọc) trên Mobile */
             .product-grid, .showcase-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -427,23 +429,7 @@
 
     <div class="marquee-wrapper">
         <div class="marquee-track" id="marqueeTrack">
-            <div class="marquee-content">
-                <span>• DENJI STORE</span>
-                <span>• THUMBNAIL</span>
-                <span>• DENJI STORE</span>
-                <span>• THUMBNAIL</span>
-                <span>• DENJI STORE</span>
-                <span>• THUMBNAIL</span>
-                <span>• DENJI STORE</span>
-                <span>• THUMBNAIL</span>
-            </div>
-            <div class="marquee-content">
-                <span>• DENJI STORE</span>
-                <span>• THUMBNAIL</span>
-                <span>• DENJI STORE</span>
-                <span>• THUMBNAIL</span>
-                <span>• DENJI STORE</span>
-                <span>• THUMBNAIL</span>
+            <div class="marquee-content" id="marquee">
                 <span>• DENJI STORE</span>
                 <span>• THUMBNAIL</span>
             </div>
@@ -538,4 +524,11 @@
                     </div>
 
                     <div class="review-item">
-                     
+                        <div class="review-header">
+                            <img src="https://i.postimg.cc/XNzvqTVd/sillyrent.jpg" class="review-avatar" alt="Avatar">
+                            <div class="review-info">
+                                <h4>@sillyrent</h4>
+                                <span>100+ SUBSCRIBERS</span>
+                            </div>
+                        </div>
+                        <p class="review-text">"Very easy to work with, gave me raw version and as
