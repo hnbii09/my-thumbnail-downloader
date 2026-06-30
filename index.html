@@ -56,13 +56,9 @@
     .marquee-content{
         display:flex;
         align-items:center;
-        gap: 0px; /* Khít chữ hoàn toàn không khoảng cách xa */
+        gap:40px;
         flex-shrink:0;
-        padding-right: 0px;
-    }
-
-    .marquee-content span {
-        padding-right: 15px; /* Giữ khoảng cách nhỏ vừa đủ giữa các chữ nối đuôi */
+        padding-right:40px;
     }
     
     @keyframes marquee{
@@ -90,6 +86,8 @@
         .nav-links a:hover:after, .nav-links a.active:after { width: 100%; }
         .separator { color: #aaaaaa; margin-left: 25px; font-size: 18px; }
         
+        #contact-section { scroll-margin-top: 140px; }
+        #product-section { scroll-margin-top: 140px; }
         #reviews-section { scroll-margin-top: 140px; }
 
         .hero-container { width: 100%; max-width: 1600px; margin: 90px auto 40px auto; padding: 0; display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: center; box-sizing: border-box; }
@@ -309,149 +307,13 @@
             color: #f65602;
             opacity: 1;
         }
-
-        /* Tối ưu hóa giao diện dành riêng cho điện thoại theo đúng thứ tự yêu cầu */
-        @media (max-width: 768px) {
-            .content-wrapper {
-                width: 95%; /* Khớp chiều ngang màn hình điện thoại */
-                display: flex;
-                flex-direction: column;
-                align-items: center; /* Căn chỉnh ngay giữa */
-            }
-
-            .marquee-wrapper {
-                width: 95%;
-                margin-top: 15px;
-                margin-bottom: 25px;
-                padding: 12px 0;
-                font-size: 14px;
-            }
-
-            .header-nav {
-                width: 100%;
-                margin: 15px auto;
-                padding: 12px 20px;
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-                position: relative;
-                top: 0;
-            }
-            .nav-links {
-                justify-content: center;
-            }
-            .nav-links a {
-                margin: 0 10px;
-                font-size: 15px;
-            }
-            .separator {
-                margin-left: 0;
-                font-size: 15px;
-            }
-
-            .hero-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-                margin-top: 20px;
-                margin-bottom: 20px;
-                text-align: center;
-                width: 100%;
-            }
-            .hero-text h1 {
-                font-size: 42px;
-                line-height: 1.1;
-            }
-            .hero-text p {
-                font-size: 15px;
-                margin-top: 15px;
-                display: none; /* Ẩn ở đây để tránh trùng lặp nội dung chữ */
-            }
-
-            .hero-right {
-                transform: none;
-                gap: 20px;
-                width: 100%;
-            }
-            .stats-grid {
-                width: 100%;
-                gap: 15px;
-            }
-            .stat-box {
-                padding: 20px;
-                border-radius: 16px;
-                text-align: center;
-            }
-            .stat-box h2 {
-                font-size: 42px;
-            }
-            .stat-box p {
-                font-size: 15px;
-            }
-            .cta-btn {
-                font-size: 22px;
-                padding: 16px;
-                margin: 0;
-            }
-            .cta-btn:hover {
-                transform: translateY(-4px);
-            }
-
-            .section-container {
-                margin: 20px auto;
-                width: 100%;
-            }
-            .title {
-                font-size: 34px;
-                margin-bottom: 25px;
-            }
-            .divider {
-                margin: 25px auto;
-            }
-
-            /* Chuyển video và ảnh showcase hiện theo chiều dọc hoàn toàn trên điện thoại */
-            .product-grid, .showcase-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                width: 100%;
-            }
-
-            .review-slider {
-                height: 480px;
-                width: 100%;
-            }
-            .review-item {
-                padding: 20px;
-            }
-            .review-info h4 {
-                font-size: 16px;
-            }
-
-            .site-footer {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 25px;
-                padding: 30px 0;
-                width: 100%;
-            }
-            .footer-right {
-                align-items: center;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <!-- 1. Bảng chữ chạy màu cam -->
     <div class="marquee-wrapper">
         <div class="marquee-track" id="marqueeTrack">
             <div class="marquee-content" id="marquee">
-                <span>• DENJI STORE</span>
-                <span>• THUMBNAIL</span>
-                <span>• DENJI STORE</span>
-                <span>• THUMBNAIL</span>
                 <span>• DENJI STORE</span>
                 <span>• THUMBNAIL</span>
             </div>
@@ -459,8 +321,6 @@
     </div>
 
     <div class="content-wrapper">
-        
-        <!-- 2. Bảng DENJI STORE MINECRAFT STUDIO (Thanh Nav) -->
         <nav class="header-nav">
             <div class="logo-area">
                 <img src="denjistore.jpg" class="logo-icon">
@@ -475,34 +335,31 @@
             </div>
         </nav>
 
-        <!-- 3. Bảng Views, Like và Order Here -->
-        <section class="hero-container">
-            <div class="hero-right">
-                <div class="stats-grid">
-                    <div class="stat-box"><h2>92K+</h2><p>Views</p></div>
-                    <div class="stat-box"><h2>1.4K+</h2><p>Likes</p></div>
+        <section id="contact-section">
+            <main class="hero-container">
+                <div class="hero-text">
+                    <h1>DENJI STORE<br><span class="outline">MINECRAFT</span><br>THUMBNAILS</h1>
+                    <p>We provide professional Minecraft thumbnails!</p>
                 </div>
-                <a href="https://discord.gg/fZkWkShtp6" target="_blank" class="cta-btn">ORDER HERE!</a>
-            </div>
+                <div class="hero-right">
+                    <div class="stats-grid">
+                        <div class="stat-box"><h2>92K+</h2><p>Views</p></div>
+                        <div class="stat-box"><h2>1.4K+</h2><p>Likes</p></div>
+                    </div>
+                    <a href="https://discord.gg/fZkWkShtp6" target="_blank" class="cta-btn">ORDER HERE!</a>
+                </div>
+            </main>
         </section>
 
-        <!-- Khối chứa nội dung Sản phẩm và Showcase -->
         <section id="product-section" class="section-container">
-            
-            <!-- 4. Youtube Viral -->
             <div class="divider"></div>
             <h2 class="title">YOU<span class="youtube-highlight">TUBE</span> VIRAL</h2>
-            
-            <!-- 5. Video link (Chiều dọc trên điện thoại) -->
             <div class="product-grid" id="productGrid">
                 <div data-youtube="io562SY6aFo"></div>
             </div>
 
-            <!-- 6. Showcase -->
             <div class="divider"></div>
             <h2 class="title">SHOWCASE</h2>
-            
-            <!-- 7. Ảnh showcase (Chiều dọc trên điện thoại) -->
             <div class="showcase-grid">
                 <div class="image-card">
                     <img src="https://i.postimg.cc/m2jFmd4q/SHOWCASE-V3.png" alt="Showcase 1">
@@ -516,18 +373,15 @@
             </div>
         </section>
 
-        <!-- 8. Reviews -->
         <section id="reviews-section" class="section-container">
             <div class="divider"></div>
             <h2 class="title">REVIEWS</h2>
-            
-            <!-- 9. Bảng reviews -->
             <div class="review-slider">
                 <div class="review-track" id="reviewTrack">
                     
                     <div class="review-item">
                         <div class="review-header">
-                            <img src="https://i.postimg.cc/tR2BxFfS/channels4-profile.jpg" class="review-avatar" alt="Avatar">
+                            <img src="https://i.postimg.cc/bv17rMHx/channels4-profile.jpg" class="review-avatar" alt="Avatar">
                             <div class="review-info">
                                 <h4>@Orbitzmc</h4>
                                 <span>2K+ SUBSCRIBERS</span>
@@ -547,4 +401,194 @@
                                 <span>40K+ SUBSCRIBERS</span>
                             </div>
                         </div>
-                        <p class="review-text">"
+                        <p class="review-text">"Denji was great to work with. He was always kind, quick to respond, and very easy to communicate with. His thumbnails are good, though I think there’s still some room for improvement. I’d rate him 4.5/5 for professionalism and 3.5/5 for the quality of his work. Overall, I’d definitely recommend working with him!"</p>
+                        <div class="review-date">
+                            June 25, 2026
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <img src="https://i.postimg.cc/XNzvqTVd/sillyrent.jpg" class="review-avatar" alt="Avatar">
+                            <div class="review-info">
+                                <h4>@sillyrent</h4>
+                                <span>100+ SUBSCRIBERS</span>
+                            </div>
+                        </div>
+                        <p class="review-text">"Very easy to work with, gave me raw version and asked for any changes. Would highly recommend!"</p>
+                        <div class="review-date">
+                            June 25, 2026
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-left">
+            <p class="site-credit">&copy; 2026 Denji Store | June 25, 2026</p>
+        </div>
+        
+        <div class="footer-right">
+            <div class="social-icons-wrapper">
+                <a href="https://discordapp.com/users/925391448243847189" target="_blank" class="social-icon-link"><img src="https://i.postimg.cc/kXGthQ55/discord.png" alt="Discord"></a>
+                <a href="https://x.com/_hoagnguynbii" target="_blank" class="social-icon-link"><img src="https://i.postimg.cc/6q3TgKtD/x.png" alt="X"></a>
+                <a href="https://www.youtube.com/@Denjiontop" target="_blank" class="social-icon-link"><img src="https://i.postimg.cc/fbfLbyLs/youtube.png" alt="YouTube"></a>
+            </div>
+            <p class="site-credit">&copy; Developer: Denji</p>
+        </div>
+    </footer>
+
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Zoomed Showcase">
+    </div>
+
+    <script>
+    const marquee = document.getElementById("marquee");
+    const marqueeTrack = document.getElementById("marqueeTrack");
+
+    while (marqueeTrack.scrollWidth < window.innerWidth * 3) {
+        marqueeTrack.innerHTML += marquee.outerHTML;
+    }
+
+    document.querySelectorAll('[data-youtube]').forEach(el => {
+        const id = el.getAttribute('data-youtube');
+        el.innerHTML = `<a href="https://www.youtube.com/watch?v=${id}" target="_blank" class="video-card"><img src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" alt="Thumbnail"></a>`;
+    });
+
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-links .nav-item');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-30% 0px -60% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${id}`) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            navItems.forEach(n => n.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    const reviewSlider = document.querySelector('.review-slider');
+    const reviewTrack = document.getElementById('reviewTrack');
+
+    const originalContent = reviewTrack.innerHTML;
+    reviewTrack.innerHTML = originalContent + originalContent;
+
+    let currentY = 0;            
+    let speed = 0.6;              
+    let isDragging = false;       
+    let startY = 0;               
+    let baseHeight = 0;          
+
+    function updateDimensions() {
+        baseHeight = (reviewTrack.scrollHeight / 2) + 15;
+    }
+    window.addEventListener('load', updateDimensions);
+    window.addEventListener('resize', updateDimensions);
+    updateDimensions();
+
+    function renderLoop() {
+        if (!isDragging) {
+            currentY -= speed; 
+            
+            if (Math.abs(currentY) >= baseHeight) {
+                currentY += baseHeight;
+            }
+        }
+        
+        reviewTrack.style.transform = `translateY(${currentY}px)`;
+        requestAnimationFrame(renderLoop);
+    }
+    
+    setTimeout(renderLoop, 200);
+
+    reviewSlider.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startY = e.pageY - currentY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        currentY = e.pageY - startY;
+
+        if (currentY > 0) currentY -= baseHeight;
+        if (Math.abs(currentY) >= baseHeight) currentY += baseHeight;
+    });
+
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    reviewSlider.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startY = e.touches[0].pageY - currentY;
+    }, { passive: false });
+
+    reviewSlider.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        e.preventDefault(); 
+        
+        currentY = e.touches[0].pageY - startY;
+
+        if (currentY > 0) currentY -= baseHeight;
+        if (Math.abs(currentY) >= baseHeight) currentY += baseHeight;
+    }, { passive: false });
+
+    window.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+
+    window.addEventListener('blur', () => {
+        isDragging = false;
+    });
+
+    const lightboxOverlay = document.getElementById('lightboxOverlay');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const showcaseImages = document.querySelectorAll('.showcase-grid .image-card img');
+
+    showcaseImages.forEach(img => {
+        img.addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightboxImg.src = img.src;
+            lightboxOverlay.classList.add('active');
+        });
+    });
+
+    lightboxClose.addEventListener('click', () => {
+        lightboxOverlay.classList.remove('active');
+    });
+
+    lightboxOverlay.addEventListener('click', (e) => {
+        if (e.target !== lightboxImg && e.target !== lightboxClose) {
+            lightboxOverlay.classList.remove('active');
+        }
+    });
+    </script>
+</body>
+</html>
