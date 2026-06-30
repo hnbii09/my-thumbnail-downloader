@@ -307,6 +307,122 @@
             color: #f65602;
             opacity: 1;
         }
+
+        /* Tối ưu hóa giao diện hoàn toàn dành riêng cho điện thoại */
+        @media (max-width: 768px) {
+            .marquee-wrapper {
+                width: 95%;
+                margin-top: 15px;
+                margin-bottom: 25px;
+                padding: 12px 0;
+                font-size: 14px;
+            }
+            .marquee-content {
+                gap: 15px;
+                padding-right: 15px;
+            }
+
+            .header-nav {
+                margin: 15px auto;
+                padding: 12px 20px;
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .nav-links a {
+                margin: 0 10px;
+                font-size: 15px;
+            }
+            .separator {
+                margin-left: 0;
+                font-size: 15px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-top: 40px;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 52px;
+                line-height: 1.1;
+            }
+            .hero-text p {
+                font-size: 15px;
+                margin-top: 15px;
+            }
+
+            .hero-right {
+                transform: none;
+                gap: 20px;
+            }
+            .stats-grid {
+                width: 100%;
+                gap: 15px;
+            }
+            .stat-box {
+                padding: 20px;
+                border-radius: 16px;
+                text-align: center;
+            }
+            .stat-box h2 {
+                font-size: 42px;
+            }
+            .stat-box p {
+                font-size: 15px;
+            }
+            .cta-btn {
+                font-size: 22px;
+                padding: 16px;
+                margin: 0;
+            }
+            .cta-btn:hover {
+                transform: translateY(-4px);
+            }
+
+            .section-container {
+                margin: 40px auto;
+            }
+            .title {
+                font-size: 34px;
+                margin-bottom: 25px;
+            }
+            .divider {
+                margin: 25px auto;
+            }
+
+            /* Chuyển các lưới hiển thị sang dạng 1 cột (Chiều dọc) trên Mobile */
+            .product-grid, .showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                width: 100%;
+            }
+
+            .review-slider {
+                height: 480px;
+            }
+            .review-item {
+                padding: 20px;
+            }
+            .review-info h4 {
+                font-size: 16px;
+            }
+
+            .site-footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 25px;
+                padding: 30px 0;
+            }
+            .footer-right {
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -381,7 +497,7 @@
                     
                     <div class="review-item">
                         <div class="review-header">
-                            <img src="https://i.postimg.cc/bv17rMHx/channels4-profile.jpg" class="review-avatar" alt="Avatar">
+                            <img src="https://i.postimg.cc/tR2BxFfS/channels4-profile.jpg" class="review-avatar" alt="Avatar">
                             <div class="review-info">
                                 <h4>@Orbitzmc</h4>
                                 <span>2K+ SUBSCRIBERS</span>
@@ -415,180 +531,4 @@
                                 <span>100+ SUBSCRIBERS</span>
                             </div>
                         </div>
-                        <p class="review-text">"Very easy to work with, gave me raw version and asked for any changes. Would highly recommend!"</p>
-                        <div class="review-date">
-                            June 25, 2026
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <footer class="site-footer">
-        <div class="footer-left">
-            <p class="site-credit">&copy; 2026 Denji Store | June 25, 2026</p>
-        </div>
-        
-        <div class="footer-right">
-            <div class="social-icons-wrapper">
-                <a href="https://discordapp.com/users/925391448243847189" target="_blank" class="social-icon-link"><img src="https://i.postimg.cc/kXGthQ55/discord.png" alt="Discord"></a>
-                <a href="https://x.com/_hoagnguynbii" target="_blank" class="social-icon-link"><img src="https://i.postimg.cc/6q3TgKtD/x.png" alt="X"></a>
-                <a href="https://www.youtube.com/@Denjiontop" target="_blank" class="social-icon-link"><img src="https://i.postimg.cc/fbfLbyLs/youtube.png" alt="YouTube"></a>
-            </div>
-            <p class="site-credit">&copy; Developer: Denji</p>
-        </div>
-    </footer>
-
-    <div class="lightbox-overlay" id="lightboxOverlay">
-        <span class="lightbox-close" id="lightboxClose">&times;</span>
-        <img class="lightbox-img" id="lightboxImg" src="" alt="Zoomed Showcase">
-    </div>
-
-    <script>
-    const marquee = document.getElementById("marquee");
-    const marqueeTrack = document.getElementById("marqueeTrack");
-
-    while (marqueeTrack.scrollWidth < window.innerWidth * 3) {
-        marqueeTrack.innerHTML += marquee.outerHTML;
-    }
-
-    document.querySelectorAll('[data-youtube]').forEach(el => {
-        const id = el.getAttribute('data-youtube');
-        el.innerHTML = `<a href="https://www.youtube.com/watch?v=${id}" target="_blank" class="video-card"><img src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" alt="Thumbnail"></a>`;
-    });
-
-    const sections = document.querySelectorAll('section[id]');
-    const navItems = document.querySelectorAll('.nav-links .nav-item');
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '-30% 0px -60% 0px',
-        threshold: 0
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                navItems.forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('href') === `#${id}`) {
-                        item.classList.add('active');
-                    }
-                });
-            }
-        });
-    }, observerOptions);
-
-    sections.forEach(section => observer.observe(section));
-
-    navItems.forEach(item => {
-        item.addEventListener('click', function() {
-            navItems.forEach(n => n.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-
-    const reviewSlider = document.querySelector('.review-slider');
-    const reviewTrack = document.getElementById('reviewTrack');
-
-    const originalContent = reviewTrack.innerHTML;
-    reviewTrack.innerHTML = originalContent + originalContent;
-
-    let currentY = 0;            
-    let speed = 0.6;              
-    let isDragging = false;       
-    let startY = 0;               
-    let baseHeight = 0;          
-
-    function updateDimensions() {
-        baseHeight = (reviewTrack.scrollHeight / 2) + 15;
-    }
-    window.addEventListener('load', updateDimensions);
-    window.addEventListener('resize', updateDimensions);
-    updateDimensions();
-
-    function renderLoop() {
-        if (!isDragging) {
-            currentY -= speed; 
-            
-            if (Math.abs(currentY) >= baseHeight) {
-                currentY += baseHeight;
-            }
-        }
-        
-        reviewTrack.style.transform = `translateY(${currentY}px)`;
-        requestAnimationFrame(renderLoop);
-    }
-    
-    setTimeout(renderLoop, 200);
-
-    reviewSlider.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startY = e.pageY - currentY;
-    });
-
-    window.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        currentY = e.pageY - startY;
-
-        if (currentY > 0) currentY -= baseHeight;
-        if (Math.abs(currentY) >= baseHeight) currentY += baseHeight;
-    });
-
-    window.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
-
-    reviewSlider.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startY = e.touches[0].pageY - currentY;
-    }, { passive: false });
-
-    reviewSlider.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        
-        e.preventDefault(); 
-        
-        currentY = e.touches[0].pageY - startY;
-
-        if (currentY > 0) currentY -= baseHeight;
-        if (Math.abs(currentY) >= baseHeight) currentY += baseHeight;
-    }, { passive: false });
-
-    window.addEventListener('touchend', () => {
-        isDragging = false;
-    });
-
-    window.addEventListener('blur', () => {
-        isDragging = false;
-    });
-
-    const lightboxOverlay = document.getElementById('lightboxOverlay');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxClose = document.getElementById('lightboxClose');
-    const showcaseImages = document.querySelectorAll('.showcase-grid .image-card img');
-
-    showcaseImages.forEach(img => {
-        img.addEventListener('click', (e) => {
-            e.stopPropagation();
-            lightboxImg.src = img.src;
-            lightboxOverlay.classList.add('active');
-        });
-    });
-
-    lightboxClose.addEventListener('click', () => {
-        lightboxOverlay.classList.remove('active');
-    });
-
-    lightboxOverlay.addEventListener('click', (e) => {
-        if (e.target !== lightboxImg && e.target !== lightboxClose) {
-            lightboxOverlay.classList.remove('active');
-        }
-    });
-    </script>
-</body>
-</html>
+                        <p class="review-text">"Very easy to work with, gave me raw version and as
