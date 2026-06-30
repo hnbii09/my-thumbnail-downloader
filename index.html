@@ -23,7 +23,7 @@
         margin-right: auto;
         margin-bottom: 40px;
 
-        /* Phân chia vạch sáng / tối cách đều chặt chẽ bằng % */
+        /* Giữ nguyên phân chia vạch sáng / tối cách đều chặt chẽ bằng % */
         background: 
             repeating-linear-gradient(
                 65deg, 
@@ -72,28 +72,30 @@
         box-sizing: border-box;
     }
     
-    /* FIX: Thêm display inline-flex để phần track co giãn khít theo khối nội dung */
+    /* FIX: Track chứa chuỗi chữ lặp vô tận hiển thị dạng inline-flex */
     .marquee-track{
         display: inline-flex;
         width: max-content;
+        will-change: transform;
         animation: marquee 16s linear infinite;
     }
     
-    /* FIX: Đồng bộ hóa gap nhất quán giúp nối đuôi mượt mà */
+    /* FIX: Khối nội dung chữ gốc */
     .marquee-content{
         display: flex;
         align-items: center;
         gap: 40px;
         flex-shrink: 0;
-        padding-right: 40px;
+        padding-right: 40px; /* Tạo khoảng trống bằng đúng gap để khi nối đuôi đều đặn */
     }
     
     @keyframes marquee{
-        from{
+        0% {
             transform: translateX(0);
         }
-        to{
-            transform: translateX(-50%);
+        100% {
+            /* Dịch chuyển chính xác bằng chiều rộng của 1 khối nội dung gốc ban đầu */
+            transform: translateX(-100%);
         }
     }
 
@@ -336,17 +338,26 @@
         }
 
         @media (max-width: 768px) {
-            /* TỐI ƯU MARQUEE TRÊN ĐIỆN THOẠI */
+            /* TỐI ƯU GIAO DIỆN CHỮ CHẠY RIÊNG CHO MOBILE */
             .marquee-wrapper {
                 width: 95%;
                 margin-top: 15px;
                 margin-bottom: 25px;
                 padding: 12px 0;
-                font-size: 15px; /* Giữ kích thước chữ cân đối */
+                font-size: 15px; 
             }
             .marquee-content {
-                gap: 25px; /* Thu nhỏ khoảng cách gap giữa các cụm chữ trên mobile */
-                padding-right: 25px;
+                gap: 25px; /* Giảm nhẹ khoảng cách gap giữa các cụm chữ trên mobile giúp cân đối */
+                padding-right: 25px; 
+            }
+            /* Thiết lập animation riêng tối ưu cho Mobile */
+            .marquee-track {
+                animation: marquee-mobile 10s linear infinite;
+            }
+
+            @keyframes marquee-mobile {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-100%); }
             }
 
             .header-nav {
@@ -531,14 +542,4 @@
                         </div>
                         <p class="review-text">"The thumbnail looked professional and definitely stood out compared to others. Communication was easy throughout the process, and I’d happily use this service again. If you’re looking for high-quality Minecraft thumbnails that grab attention, I’d definitely recommend them."</p>
                         <div class="review-date">
-                            June 27, 2026
-                        </div>
-                    </div>
-
-                    <div class="review-item">
-                        <div class="review-header">
-                            <img src="https://i.postimg.cc/2Sp8FhLm/pepe.jpg" class="review-avatar" alt="Avatar">
-                            <div class="review-info">
-                                <h4>@pepetheninja</h4>
-                                <span>40K+ SUBSCRIBERS</span>
-                            </di
+                            June 27, 2
