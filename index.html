@@ -13,7 +13,6 @@
     
     ::-webkit-scrollbar{ width:10px; } ::-webkit-scrollbar-track{ background:transparent; } ::-webkit-scrollbar-thumb{ background:#aaaaaa; border-radius:999px; } ::-webkit-scrollbar-thumb:hover{ background:#bdbdbd; } html{ scrollbar-width:thin; scrollbar-color:#aaaaaa transparent; }
     
-    /* CẬP NHẬT: THAY ĐỔI TỶ LỆ GIÚP CÁC VẠCH SỌC CHÉO NẰM GẦN NHAU HƠN */
     .marquee-wrapper{
         position: relative;
         width: 98%; 
@@ -23,23 +22,7 @@
         margin-right: auto;
         margin-bottom: 40px;
 
-        /* Thu hẹp khoảng cách % giữa các dải màu giúp chúng khít sát gần nhau hơn */
-        background: 
-            repeating-linear-gradient(
-                65deg, 
-                rgba(255, 255, 255, 0) 0%, 
-                rgba(255, 255, 255, 0) 15%, 
-                rgba(218, 59, 254, 0.5) 15%, 
-                rgba(218, 59, 254, 0.5) 35%,
-                rgba(255, 255, 255, 0) 35%,
-                rgba(255, 255, 255, 0) 50%
-            ), 
-            linear-gradient(90deg, #9900ff, #cc00ff);
-        
-        /* Giảm kích thước background-size xuống một chút giúp sọc chéo dày hơn và khít hơn */
-        background-size: 200px 100%, 100% 100%;
-        animation: shine-move 2.5s linear infinite;
-
+        background: linear-gradient(90deg,#f65602,#ff6a00);
         color: #000;
         font-family: 'Montserrat', sans-serif;
         font-weight: 900;
@@ -52,14 +35,9 @@
         white-space: nowrap;
 
         border-radius: 16px;
-        box-shadow: 0 5px 20px rgba(204,0,255,.4);
-        box-sizing: border-box;
-    }
+        box-shadow: 0 5px 20px rgba(246,86,2,.4);
 
-    /* Điều chỉnh khớp với kích thước background-size mới để không bị khựng */
-    @keyframes shine-move {
-        0% { background-position: 0px 0, 0 0; }
-        100% { background-position: -200px 0, 0 0; }
+        box-sizing: border-box;
     }
 
     .content-wrapper {
@@ -69,47 +47,31 @@
         box-sizing: border-box;
     }
     
-    /* FIX CHỮ CHẠY MƯỢT, LIÊN TỤC KHÔNG KHỰNG KHÔNG KHOẢNG TRỐNG */
     .marquee-track{
-        display: inline-flex;
-        width: max-content;
-        will-change: transform;
-        animation: marquee 16s linear infinite;
+        display:flex;
+        width:max-content;
+        animation:marquee 28s linear infinite;
     }
     
     .marquee-content{
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        flex-shrink: 0;
-        padding-right: 40px;
+        display:flex;
+        align-items:center;
+        gap:40px;
+        flex-shrink:0;
+        padding-right:40px;
     }
     
     @keyframes marquee{
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-100%); }
+        from{
+            transform:translateX(0);
+        }
+        to{
+            transform:translateX(-50%);
+        }
     }
 
     @media (max-width: 768px) {
         body { overflow-x: hidden; }
-        .marquee-wrapper {
-            width: 95%;
-            margin-top: 15px;
-            margin-bottom: 25px;
-            padding: 12px 0;
-            font-size: 14px;
-        }
-        .marquee-content {
-            gap: 25px;
-            padding-right: 25px;
-        }
-        .marquee-track {
-            animation: marquee-mobile 10s linear infinite;
-        }
-        @keyframes marquee-mobile {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
     }
 
         .header-nav { width: 100%; max-width: 1600px; margin: 30px auto; background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 18px 40px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); box-sizing: border-box; position: sticky; top: 20px; z-index: 1000; }
@@ -346,17 +308,120 @@
             opacity: 1;
         }
 
+        /* Tối ưu hóa giao diện hoàn toàn dành riêng cho điện thoại */
         @media (max-width: 768px) {
+            .marquee-wrapper {
+                width: 95%;
+                margin-top: 15px;
+                margin-bottom: 25px;
+                padding: 12px 0;
+                font-size: 14px;
+            }
+            .marquee-content {
+                gap: 15px;
+                padding-right: 15px;
+            }
+
+            .header-nav {
+                margin: 15px auto;
+                padding: 12px 20px;
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .nav-links a {
+                margin: 0 10px;
+                font-size: 15px;
+            }
+            .separator {
+                margin-left: 0;
+                font-size: 15px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-top: 40px;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 52px;
+                line-height: 1.1;
+            }
+            .hero-text p {
+                font-size: 15px;
+                margin-top: 15px;
+            }
+
+            .hero-right {
+                transform: none;
+                gap: 20px;
+            }
+            .stats-grid {
+                width: 100%;
+                gap: 15px;
+            }
+            .stat-box {
+                padding: 20px;
+                border-radius: 16px;
+                text-align: center;
+            }
+            .stat-box h2 {
+                font-size: 42px;
+            }
+            .stat-box p {
+                font-size: 15px;
+            }
+            .cta-btn {
+                font-size: 22px;
+                padding: 16px;
+                margin: 0;
+            }
+            .cta-btn:hover {
+                transform: translateY(-4px);
+            }
+
+            .section-container {
+                margin: 40px auto;
+            }
+            .title {
+                font-size: 34px;
+                margin-bottom: 25px;
+            }
+            .divider {
+                margin: 25px auto;
+            }
+
+            /* Chuyển các lưới hiển thị sang dạng 1 cột (Chiều dọc) trên Mobile */
             .product-grid, .showcase-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
                 width: 100%;
             }
-            .review-slider { height: 480px; }
-            .review-item { padding: 20px; }
-            .review-info h4 { font-size: 16px; }
-            .site-footer { flex-direction: column; align-items: center; text-align: center; gap: 25px; padding: 30px 0; }
-            .footer-right { align-items: center; }
+
+            .review-slider {
+                height: 480px;
+            }
+            .review-item {
+                padding: 20px;
+            }
+            .review-info h4 {
+                font-size: 16px;
+            }
+
+            .site-footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 25px;
+                padding: 30px 0;
+            }
+            .footer-right {
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -439,7 +504,9 @@
                             </div>
                         </div>
                         <p class="review-text">"The thumbnail looked professional and definitely stood out compared to others. Communication was easy throughout the process, and I’d happily use this service again. If you’re looking for high-quality Minecraft thumbnails that grab attention, I’d definitely recommend them."</p>
-                        <div class="review-date">June 27, 2026</div>
+                        <div class="review-date">
+                            June 27, 2026
+                        </div>
                     </div>
 
                     <div class="review-item">
@@ -451,7 +518,9 @@
                             </div>
                         </div>
                         <p class="review-text">"Denji was great to work with. He was always kind, quick to respond, and very easy to communicate with. His thumbnails are good, though I think there’s still some room for improvement. I’d rate him 4.5/5 for professionalism and 3.5/5 for the quality of his work. Overall, I’d definitely recommend working with him!"</p>
-                        <div class="review-date">June 25, 2026</div>
+                        <div class="review-date">
+                            June 25, 2026
+                        </div>
                     </div>
 
                     <div class="review-item">
@@ -462,27 +531,4 @@
                                 <span>100+ SUBSCRIBERS</span>
                             </div>
                         </div>
-                        <p class="review-text">"Very easy to work with, gave me raw version and asked for any changes. Would highly recommend!"</p>
-                        <div class="review-date">June 25, 2026</div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <footer class="site-footer">
-        <div class="footer-left">
-            <p class="site-credit">&copy; 2026 Denji Store | June 25, 2026</p>
-        </div>
-        <div class="footer-right">
-            <div class="social-icons-wrapper">
-                <a href="https://discordapp.com/users/925391448243847189" target="_blank" class="social-icon-link"><img src="https://i.postimg.cc/kXGthQ55/discord.png" alt="Discord"></a>
-                <a href="https://x.com/_hoagnguynbii" target="_blank" class="social-icon-link"><img src="https://i.postimg.cc/6q3TgKtD/x.png" alt="X"></a>
-                <a href="https://www.youtube.com/@Denjiontop" target="_blank" class="social-icon-link"><img src="https://i.postimg.cc/fbfLbyLs/youtube.png" alt="YouTube"></a>
-            </div>
-            <p class="site-credit">&copy; Developer: Denji</p>
-        </div>
-    </footer>
-
-    <div class="lightbox-overlay
+                        <p class="review-text">"Very easy to work with, gave me raw version and as
